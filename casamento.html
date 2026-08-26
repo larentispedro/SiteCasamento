@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marcela &amp; José Augusto — 27 de novembro</title>
+<meta name="description" content="Marcela e José Augusto se casam em 27 de novembro, em Chapecó/SC.">
+
+<!--
+  =========================================================================
+  PROCURE POR "CONFIRMAR" — o que ainda precisa vir deles:
+  1. O ano  -> 27/11/2026 cai numa SEXTA. Se for sábado, é 2027.
+  2. Horários reais (cerimônia, festa, bolo)
+  3. As datas/marcos da linha do tempo
+  4. Chave Pix, valores das cotas
+  5. Fotos reais em img/galeria/ (os arquivos atuais são provisórios)
+  6. Número do WhatsApp e prazo do RSVP
+  =========================================================================
+-->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Karla:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+
+<style>
+/* =================================================================
+   1. TOKENS — cores tiradas da própria arte que a Marcela enviou
+   ================================================================= */
+:root {
+  --creme:      #F7F2EC;   /* fundo do convite */
+  --creme-alto: #EFEADF;   /* blocos sobre o fundo */
+  --salvia:     #B6BA99;   /* verde claro das folhas */
+  --mata:       #2E4A32;   /* verde escuro da caligrafia */
+  --mata-mid:   #5C7355;   /* texto secundário */
+  --ouro:       #C0A062;   /* fio dourado da moldura */
+
+  --display: "Cormorant Garamond", Georgia, serif;
+  --script:  "Parisienne", cursive;
+  --corpo:   "Karla", system-ui, sans-serif;
+
+  /* Sobrescrevo as variáveis do Bootstrap: os componentes prontos
+     já nascem no tema em vez do azul padrão. */
+  --bs-body-bg: var(--creme);
+  --bs-body-color: var(--mata);
+  --bs-body-font-family: var(--corpo);
+  --bs-link-color: var(--mata);
+  --bs-link-hover-color: var(--ouro);
+  --bs-border-color: rgba(46,74,50,.14);
+}
+
+body { font-size: 1.0625rem; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+h2 {
+  font-family: var(--display); font-weight: 400;
+  /* clamp(mín, ideal, máx): cresce com a tela sem media query */
+  font-size: clamp(1.9rem, 5.5vw, 2.75rem);
+  line-height: 1.1; color: var(--mata);
+}
+
+.olho {
+  font-size: .75rem; font-weight: 600; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--mata-mid);
+}
+
+.secao { padding: clamp(3.5rem, 10vw, 6rem) 0; }
+
+/* Fio dourado separando as seções, como a moldura do convite */
+.secao + .secao { border-top: 1px solid rgba(192,160,98,.35); }
+
+.btn-ouro {
+  --bs-btn-bg: var(--ouro); --bs-btn-border-color: var(--ouro);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-bg: #AE8F52; --bs-btn-hover-border-color: #AE8F52;
+  --bs-btn-hover-color: #fff;
+  font-weight: 600; font-size: .8125rem; letter-spacing: .08em;
+  text-transform: uppercase; border-radius: 2px; padding: .85rem 1.6rem;
+}
+
+.btn-contorno {
+  --bs-btn-color: var(--mata); --bs-btn-border-color: var(--salvia);
+  --bs-btn-hover-bg: var(--creme-alto);
+  --bs-btn-hover-color: var(--mata); --bs-btn-hover-border-color: var(--mata-mid);
+  font-weight: 600; font-size: .8125rem; letter-spacing: .08em;
+  text-transform: uppercase; border-radius: 2px; padding: .85rem 1.6rem;
+}
+
+/* =================================================================
+   2. NAVBAR
+   ================================================================= */
+.navbar {
+  background: rgba(247,242,236,.94); backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent; transition: border-color .3s ease;
+}
+.navbar.rolou { border-bottom-color: rgba(192,160,98,.35); }
+
+.navbar-brand {
+  font-family: var(--script); color: var(--mata) !important;
+  font-size: 1.5rem;
+  /* Some enquanto o convite está na tela: os nomes já aparecem lá */
+  opacity: 0; transition: opacity .3s ease; pointer-events: none;
+}
+.navbar.rolou .navbar-brand { opacity: 1; pointer-events: auto; }
+
+.navbar .nav-link {
+  color: var(--mata-mid) !important; font-size: .8125rem;
+  letter-spacing: .12em; text-transform: uppercase; font-weight: 500;
+}
+.navbar .nav-link:hover { color: var(--mata) !important; }
+.navbar-toggler { border-color: rgba(46,74,50,.2); padding: .35rem .6rem; }
+
+/* =================================================================
+   3. HERO — a arte deles é o elemento principal
+   Como os nomes já estão desenhados na imagem, não repito em texto:
+   duplicar competiria com a arte e ficaria amador.
+   ================================================================= */
+.hero {
+  min-height: 100svh;   /* svh desconta a barra do navegador no celular */
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 6rem 1.25rem 5rem;
+  background: var(--creme);
+}
+
+.hero-arte {
+  width: 100%; max-width: 56rem;
+  border-radius: 3px;
+  box-shadow: 0 18px 50px rgba(46,74,50,.10);
+  margin-bottom: clamp(2rem, 6vw, 3rem);
+}
+
+.hero-data {
+  font-family: var(--display); font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--mata-mid); margin: 0;
+}
+
+.rolar {
+  position: absolute; bottom: 1.5rem; color: var(--salvia);
+  font-size: 1.5rem; text-decoration: none;
+  animation: flutuar 2.4s ease-in-out infinite;
+}
+@keyframes flutuar {
+  0%,100% { transform: translateY(0);   opacity: .6; }
+  50%     { transform: translateY(8px); opacity: 1;  }
+}
+
+/* =================================================================
+   4. CONTAGEM REGRESSIVA
+   ================================================================= */
+.contagem {
+  display: flex; justify-content: center; align-items: baseline;
+  gap: clamp(1rem, 5vw, 2.25rem);
+  margin-top: clamp(1.75rem, 5vw, 2.5rem);
+  font-family: var(--display);
+}
+.unidade { min-width: 3rem; }
+.unidade .num {
+  display: block; font-size: clamp(2rem, 8vw, 3.25rem);
+  font-weight: 300; line-height: 1; color: var(--mata);
+  /* Trava a largura dos algarismos: sem isso a linha pula a cada seg */
+  font-variant-numeric: tabular-nums;
+}
+.unidade .rot {
+  display: block; font-family: var(--corpo);
+  font-size: clamp(.625rem, 2.4vw, .6875rem); letter-spacing: .16em;
+  text-transform: uppercase; color: var(--mata-mid); margin-top: .5rem;
+}
+.unidade.seg .num { color: var(--ouro); }
+.fim { font-family: var(--script); font-size: clamp(2rem,9vw,3rem); color: var(--ouro); margin: 0; }
+
+/* =================================================================
+   5. CONVITE (o texto que a Marcela escreveu)
+   ================================================================= */
+.convite p {
+  font-family: var(--display);
+  font-size: clamp(1.125rem, 2.6vw, 1.375rem);
+  line-height: 1.75; color: var(--mata-mid); margin-bottom: 1.5rem;
+}
+.convite p em { color: var(--mata); font-style: italic; }
+
+.assinatura {
+  font-family: var(--script); font-size: clamp(1.75rem, 5vw, 2.5rem);
+  color: var(--mata); margin-top: 2.5rem;
+}
+
+/* Ornamento: fio dourado com um losango no meio */
+.fio {
+  display: flex; align-items: center; justify-content: center;
+  gap: .75rem; color: var(--ouro); margin: 2.5rem 0;
+}
+.fio::before, .fio::after {
+  content: ""; height: 1px; width: clamp(2.5rem, 12vw, 5rem);
+  background: currentColor; opacity: .5;
+}
+.fio span { font-size: .6rem; transform: rotate(45deg); }
+
+/* =================================================================
+   6. LINHA DO TEMPO (história e programação)
+   A linha é a borda do container; as bolinhas são ::before dos itens.
+   ================================================================= */
+.timeline { position: relative; padding-left: 2rem; border-left: 1px solid var(--salvia); }
+.timeline-item { position: relative; padding-bottom: 2.25rem; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item::before {
+  content: ""; position: absolute; left: calc(-2rem - 5px); top: .6rem;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--ouro); box-shadow: 0 0 0 4px var(--creme);
+}
+.timeline-item .quando {
+  font-size: .75rem; font-weight: 600; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--ouro); margin-bottom: .2rem;
+}
+.timeline-item h3 { font-family: var(--display); font-size: 1.5rem; margin-bottom: .25rem; }
+.timeline-item p { color: var(--mata-mid); font-size: .9375rem; margin: 0; }
+
+/* =================================================================
+   7. GALERIA
+   ================================================================= */
+.galeria-item {
+  display: block; overflow: hidden; border-radius: 3px;
+  border: 1px solid rgba(192,160,98,.3);
+  /* aspect-ratio mantém todas no mesmo formato, seja qual for o original */
+  aspect-ratio: 3 / 4; background: var(--creme-alto);
+}
+.galeria-item img {
+  width: 100%; height: 100%; object-fit: cover;  /* corta em vez de distorcer */
+  transition: transform .5s ease;
+}
+.galeria-item:hover img { transform: scale(1.05); }
+.modal-content { background: var(--creme); border: 1px solid rgba(192,160,98,.4); }
+.modal-body img { width: 100%; border-radius: 2px; }
+
+/* =================================================================
+   8. CARDS
+   ================================================================= */
+.card-local, .card-cota {
+  background: var(--creme-alto); border: 1px solid rgba(192,160,98,.3);
+  border-radius: 3px; padding: 1.75rem;
+  height: 100%;                      /* iguala a altura das colunas */
+  display: flex; flex-direction: column;
+}
+.card-local .etapa {
+  font-family: var(--script); font-size: 2rem; color: var(--mata);
+  line-height: 1; margin-bottom: .35rem;
+}
+.card-local .hora {
+  font-size: .75rem; font-weight: 600; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--ouro);
+}
+.card-local .nome { font-weight: 600; margin-bottom: .15rem; }
+.card-local .endereco { color: var(--mata-mid); font-size: .9375rem; }
+/* margin-top: auto empurra o botão pro rodapé do card, alinhando os
+   dois lados mesmo com endereços de alturas diferentes */
+.card-local .btn, .card-cota .btn { margin-top: auto; }
+
+.card-cota .valor {
+  font-family: var(--display); font-size: 2rem; color: var(--ouro);
+  line-height: 1; margin-bottom: .35rem;
+}
+.card-cota h3 { font-size: 1rem; font-weight: 600; margin-bottom: .35rem; }
+.card-cota p { color: var(--mata-mid); font-size: .875rem; margin-bottom: 1.5rem; }
+
+.mapa { border: 1px solid rgba(192,160,98,.3); border-radius: 2px; overflow: hidden; line-height: 0; }
+.mapa iframe {
+  width: 100%; height: clamp(200px, 45vw, 240px); border: 0; display: block;
+  filter: grayscale(.25) contrast(.95) brightness(1.03);
+}
+
+.info-item { border-left: 2px solid var(--ouro); padding-left: 1.25rem; height: 100%; }
+.info-item h3 { font-family: var(--display); font-size: 1.375rem; margin-bottom: .25rem; }
+.info-item p { color: var(--mata-mid); font-size: .9375rem; margin: 0; }
+
+.pix-box {
+  background: var(--creme-alto); border: 1px dashed var(--salvia);
+  border-radius: 3px; padding: 1.5rem;
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 1rem;
+}
+.pix-chave { font-family: ui-monospace, Menlo, monospace; font-size: 1rem; word-break: break-all; }
+.pix-rot { font-size: .6875rem; letter-spacing: .16em; text-transform: uppercase; color: var(--mata-mid); }
+
+.rsvp {
+  background: var(--creme-alto); border: 1px solid rgba(192,160,98,.35);
+  border-radius: 3px; padding: clamp(2rem, 6vw, 3.5rem); text-align: center;
+}
+
+footer {
+  padding: 3rem 1.25rem 3.5rem; text-align: center;
+  border-top: 1px solid rgba(192,160,98,.35);
+  color: var(--mata-mid); font-size: .8125rem;
+  letter-spacing: .16em; text-transform: uppercase;
+}
+
+/* Dropdown do Bootstrap no tema do site */
+.dropdown-menu-agenda {
+  --bs-dropdown-bg: var(--creme);
+  --bs-dropdown-border-color: rgba(192,160,98,.4);
+  --bs-dropdown-link-color: var(--mata);
+  --bs-dropdown-link-hover-bg: var(--creme-alto);
+  --bs-dropdown-link-hover-color: var(--mata);
+  --bs-dropdown-border-radius: 2px; font-size: .9375rem;
+}
+
+/* =================================================================
+   9. REVELAÇÃO AO ROLAR + ACESSIBILIDADE
+   ================================================================= */
+.revela { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.3,1); }
+.revela.visivel { opacity: 1; transform: none; }
+
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--ouro); outline-offset: 3px; }
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rolar { animation: none; }
+  .revela { opacity: 1; transform: none; transition: none; }
+  .galeria-item img { transition: none; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+  <div class="container">
+    <a class="navbar-brand" href="#topo">Marcela &amp; José Augusto</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="menu">
+      <ul class="navbar-nav gap-lg-3">
+        <li class="nav-item"><a class="nav-link" href="#convite">Convite</a></li>
+        <li class="nav-item"><a class="nav-link" href="#historia">História</a></li>
+        <li class="nav-item"><a class="nav-link" href="#dia">O dia</a></li>
+        <li class="nav-item"><a class="nav-link" href="#onde">Onde</a></li>
+        <li class="nav-item"><a class="nav-link" href="#presentes">Presentes</a></li>
+        <li class="nav-item"><a class="nav-link" href="#presenca">Presença</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero position-relative" id="topo">
+  <!-- A arte já traz os nomes; repetir em texto competiria com ela -->
+  <img class="hero-arte" src="img/arte.jpg"
+       alt="Marcela e José Augusto — convite ilustrado com a catedral de Chapecó">
+
+  <!-- CONFIRMAR o ano -->
+  <p class="hero-data">27 de novembro de 2026</p>
+
+  <div class="contagem" id="contagem">
+    <div class="unidade"><span class="num" id="dias">--</span><span class="rot">dias</span></div>
+    <div class="unidade"><span class="num" id="horas">--</span><span class="rot">horas</span></div>
+    <div class="unidade"><span class="num" id="min">--</span><span class="rot">min</span></div>
+    <div class="unidade seg"><span class="num" id="seg">--</span><span class="rot">seg</span></div>
+  </div>
+
+  <div class="dropdown mt-4">
+    <button class="btn btn-contorno dropdown-toggle" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">Salvar na agenda</button>
+    <ul class="dropdown-menu dropdown-menu-agenda">
+      <li><a class="dropdown-item" id="ag-google" href="#" target="_blank" rel="noopener">Google Agenda</a></li>
+      <li><a class="dropdown-item" id="ag-outlook" href="#" target="_blank" rel="noopener">Outlook</a></li>
+      <li><a class="dropdown-item" id="ag-ics" href="#">Apple / outros (.ics)</a></li>
+    </ul>
+  </div>
+
+  <a href="#convite" class="rolar" aria-label="Ver mais">&darr;</a>
+</header>
+
+<!-- ===================== CONVITE ===================== -->
+<section class="secao" id="convite">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center convite revela">
+
+        <p>Há encontros que parecem acontecer por acaso, mas que, com o tempo,
+           nos fazem acreditar que alguns caminhos já estavam destinados a se cruzar.</p>
+
+        <p>Entre escolhas, sonhos, aprendizados e tantos momentos compartilhados,
+           construímos a nossa história — uma história feita de amor, companheirismo,
+           cuidado e da certeza de que a vida fica mais bonita quando caminhamos juntos.</p>
+
+        <p>E agora estamos prestes a viver um dos capítulos mais especiais dessa
+           jornada: <em>o nosso casamento</em>.</p>
+
+        <p>Criamos este espaço para dividir com vocês um pouco desse sonho e todos
+           os detalhes desse dia tão esperado. Mais do que celebrar a nossa união,
+           queremos celebrar a alegria de ter conosco pessoas tão queridas e especiais.</p>
+
+        <p>Que este novo capítulo seja vivido e celebrado com aquilo que escolhemos
+           levar para a vida: <em>fé, amor, cumplicidade e a alegria de escolher um
+           ao outro, todos os dias.</em></p>
+
+        <div class="fio"><span>&#9670;</span></div>
+
+        <p><em>E, de repente, todos os caminhos nos trouxeram até aqui.</em></p>
+
+        <p class="assinatura mb-0">Marcela e José Augusto</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HISTÓRIA ===================== -->
+<section class="secao" id="historia">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 revela">
+        <p class="olho mb-3">A história deles</p>
+        <h2 class="mb-5">Como tudo começou</h2>
+
+        <!-- CONFIRMAR: a Marcela disse que vai escrever os tópicos.
+             Estes são só a estrutura esperando o texto dela. -->
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="quando">Ano do encontro</p>
+            <h3>Onde se conheceram</h3>
+            <p>Aguardando o texto deles.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="quando">Ano do namoro</p>
+            <h3>O começo do namoro</h3>
+            <p>Aguardando o texto deles.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="quando">Ano do pedido</p>
+            <h3>O pedido</h3>
+            <p>Aguardando o texto deles.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="quando">27 de novembro</p>
+            <h3>O casamento</h3>
+            <p>E aí entra você, que está lendo isso.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== O DIA ===================== -->
+<section class="secao" id="dia">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 revela">
+        <p class="olho mb-3">Programação</p>
+        <h2 class="mb-5">Como vai ser o dia</h2>
+
+        <!-- CONFIRMAR todos os horários -->
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="quando">15h30</p>
+            <h3>Chegada dos convidados</h3>
+            <p>Na Catedral Santo Antônio, no centro.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="quando">16h</p>
+            <h3>Cerimônia</h3>
+            <p>Chegue antes: a noiva entra no horário.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="quando">19h</p>
+            <h3>Recepção na Chácara do Cris</h3>
+            <p>Cerca de 12 km da catedral — reserve o tempo do trajeto.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="quando">23h</p>
+            <h3>Corte do bolo</h3>
+            <p>Seguido da pista até o fim.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ONDE ===================== -->
+<section class="secao" id="onde">
+  <div class="container">
+    <div class="revela text-center mb-5">
+      <p class="olho mb-3">Onde</p>
+      <h2>São dois endereços no mesmo dia</h2>
+    </div>
+
+    <!-- 1 coluna no celular, 2 a partir de lg -->
+    <div class="row g-4 revela">
+      <div class="col-lg-6">
+        <article class="card-local">
+          <p class="etapa">Cerimônia</p>
+          <p class="hora mb-4">16h</p>
+          <p class="nome">Catedral Santo Antônio</p>
+          <p class="endereco mb-4">R. Mal. Floriano Peixoto — Centro, Chapecó/SC</p>
+          <div class="mapa mb-4">
+            <iframe id="mapa-catedral" title="Mapa da Catedral Santo Antônio" loading="lazy"></iframe>
+          </div>
+          <a class="btn btn-ouro" id="rota-catedral" href="#" target="_blank" rel="noopener">Como chegar</a>
+        </article>
+      </div>
+      <div class="col-lg-6">
+        <article class="card-local">
+          <p class="etapa">Festa</p>
+          <p class="hora mb-4">a partir das 19h</p>
+          <p class="nome">Chácara do Cris</p>
+          <p class="endereco mb-4">BR-282, 535 — Trevo, Chapecó/SC</p>
+          <div class="mapa mb-4">
+            <iframe id="mapa-chacara" title="Mapa da Chácara do Cris" loading="lazy"></iframe>
+          </div>
+          <a class="btn btn-ouro" id="rota-chacara" href="#" target="_blank" rel="noopener">Como chegar</a>
+        </article>
+      </div>
+    </div>
+
+    <p class="text-center mt-4 mb-0" style="color: var(--mata-mid)" id="trajeto"></p>
+  </div>
+</section>
+
+<!-- ===================== GALERIA ===================== -->
+<section class="secao" id="galeria">
+  <div class="container">
+    <div class="revela text-center mb-5">
+      <p class="olho mb-3">Vocês dois</p>
+      <h2>Fotos</h2>
+    </div>
+    <!-- CONFIRMAR: trocar pelas fotos reais em img/galeria/ -->
+    <div class="row g-3 revela" id="grade-galeria"></div>
+  </div>
+</section>
+
+<div class="modal fade" id="lightbox" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-body p-2"><img id="lightbox-img" src="" alt=""></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PRESENTES ===================== -->
+<section class="secao" id="presentes">
+  <div class="container">
+    <div class="revela text-center mb-5">
+      <p class="olho mb-3">Presentes</p>
+      <h2 class="mb-3">Cotas de lua de mel</h2>
+      <p class="mx-auto mb-0" style="color: var(--mata-mid); max-width: 34rem">
+        A presença de vocês já basta. Mas quem quiser ajudar na viagem,
+        pode escolher uma cota abaixo ou usar o Pix direto.
+      </p>
+    </div>
+
+    <!-- CONFIRMAR: valores e títulos -->
+    <div class="row g-4 mb-5 revela">
+      <div class="col-md-6 col-lg-4">
+        <div class="card-cota">
+          <p class="valor">R$ 100</p>
+          <h3>Um jantar a dois</h3>
+          <p>Com vista pro mar, de preferência.</p>
+          <a class="btn btn-contorno cota" href="#" data-valor="100">Presentear</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card-cota">
+          <p class="valor">R$ 250</p>
+          <h3>Uma diária</h3>
+          <p>Uma noite a mais na viagem.</p>
+          <a class="btn btn-contorno cota" href="#" data-valor="250">Presentear</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card-cota">
+          <p class="valor">R$ 500</p>
+          <h3>Um passeio</h3>
+          <p>Aquele que eles vão contar pra todo mundo.</p>
+          <a class="btn btn-contorno cota" href="#" data-valor="500">Presentear</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFIRMAR: a chave Pix real -->
+    <div class="pix-box revela">
+      <div>
+        <p class="pix-rot mb-1">Chave Pix</p>
+        <span class="pix-chave" id="pix-chave">casamento@exemplo.com.br</span>
+      </div>
+      <button class="btn btn-ouro" id="btn-pix">Copiar chave</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== INFORMAÇÕES ===================== -->
+<section class="secao" id="info">
+  <div class="container">
+    <div class="revela text-center mb-5">
+      <p class="olho mb-3">Antes de ir</p>
+      <h2>O que os convidados costumam perguntar</h2>
+    </div>
+    <!-- CONFIRMAR todos os textos -->
+    <div class="row g-4 revela">
+      <div class="col-md-6 col-lg-3">
+        <div class="info-item"><h3>Traje</h3><p>Esporte fino. Evite branco e off-white.</p></div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="info-item"><h3>Estacionamento</h3><p>A chácara tem estacionamento próprio e gratuito.</p></div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="info-item"><h3>Crianças</h3><p>Confirme se a festa será só para adultos.</p></div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="info-item"><h3>Hospedagem</h3><p>Para quem vem de fora: hotéis próximos à BR-282.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRESENÇA ===================== -->
+<section class="secao" id="presenca">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 revela">
+        <div class="rsvp">
+          <p class="olho mb-3">Confirmação</p>
+          <h2 class="mb-3">Você vem?</h2>
+          <p class="mb-4" style="color: var(--mata-mid)">
+            Confirme até <strong>30 de outubro</strong> para ajudarem no
+            fechamento do buffet.
+          </p>
+          <!-- CONFIRMAR: número no formato 55 + DDD + número -->
+          <a class="btn btn-ouro" id="btn-rsvp" href="#" target="_blank" rel="noopener">
+            Confirmar pelo WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Marcela &amp; José Augusto — 27 · 11 · 2026</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* =================================================================
+   CONFIGURAÇÃO — é só aqui que você mexe
+   ================================================================= */
+
+// CONFIRMAR: 27/11/2026 é uma sexta-feira. Se for sábado, use 2027.
+// O "-03:00" é o fuso de Brasília. Sem ele, o navegador usa o fuso de
+// quem acessa e a contagem sai errada pra quem abrir de fora.
+const DATA_DO_CASAMENTO = new Date("2026-11-27T16:00:00-03:00");
+const FIM_DA_FESTA      = new Date("2026-11-28T02:00:00-03:00");
+
+const LOCAIS = {
+  catedral: { lat: -27.1052024, lng: -52.6137671 },
+  chacara:  { lat: -26.9998751, lng: -52.6516185 }
+};
+
+const PIX      = "casamento@exemplo.com.br";   // CONFIRMAR
+const WHATSAPP = "5549900000000";              // CONFIRMAR
+
+const EVENTO = {
+  titulo: "Casamento de Marcela e José Augusto",
+  local:  "Catedral Santo Antônio, R. Mal. Floriano Peixoto, Centro, Chapecó/SC",
+  desc:   "Cerimônia na Catedral às 16h. Festa na Chácara do Cris às 19h."
+};
+
+const FOTOS = [
+  { arq: "img/galeria/foto-1.jpg", alt: "Foto do casal" },
+  { arq: "img/galeria/foto-2.jpg", alt: "Foto do casal" },
+  { arq: "img/galeria/foto-3.jpg", alt: "Foto do casal" },
+  { arq: "img/galeria/foto-4.jpg", alt: "Foto do casal" },
+  { arq: "img/galeria/foto-5.jpg", alt: "Foto do casal" },
+  { arq: "img/galeria/foto-6.jpg", alt: "Foto do casal" }
+];
+
+
+/* =================================================================
+   CONTAGEM REGRESSIVA
+   ================================================================= */
+const contagem = document.getElementById("contagem");
+const campos = {
+  dias:  document.getElementById("dias"),
+  horas: document.getElementById("horas"),
+  min:   document.getElementById("min"),
+  seg:   document.getElementById("seg")
+};
+const doisDigitos = (n) => String(n).padStart(2, "0");
+
+function atualizarContagem() {
+  // Recalculo a diferença a cada execução em vez de subtrair 1 do valor
+  // anterior: setInterval não é preciso e o navegador do celular congela
+  // timers com a aba em segundo plano. Assim o contador se corrige.
+  const falta = DATA_DO_CASAMENTO - new Date();
+  if (falta <= 0) {
+    contagem.innerHTML = '<p class="fim">É hoje!</p>';
+    clearInterval(relogio);
+    return;
+  }
+  const SEG = 1000, MIN = 60*SEG, HORA = 60*MIN, DIA = 24*HORA;
+  campos.dias.textContent  = Math.floor(falta / DIA);
+  campos.horas.textContent = doisDigitos(Math.floor((falta % DIA) / HORA));
+  campos.min.textContent   = doisDigitos(Math.floor((falta % HORA) / MIN));
+  campos.seg.textContent   = doisDigitos(Math.floor((falta % MIN) / SEG));
+}
+atualizarContagem();
+const relogio = setInterval(atualizarContagem, 1000);
+
+
+/* =================================================================
+   SALVAR NA AGENDA
+   ================================================================= */
+function paraICS(d) {
+  // Formato exigido: AAAAMMDDTHHMMSSZ, em UTC
+  return d.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+}
+
+// Google: abre a agenda da pessoa com o evento já preenchido — ela só
+// confirma. Nada é baixado.
+document.getElementById("ag-google").href =
+  "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+  "&text="     + encodeURIComponent(EVENTO.titulo) +
+  "&dates="    + paraICS(DATA_DO_CASAMENTO) + "/" + paraICS(FIM_DA_FESTA) +
+  "&details="  + encodeURIComponent(EVENTO.desc) +
+  "&location=" + encodeURIComponent(EVENTO.local);
+
+document.getElementById("ag-outlook").href =
+  "https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose" +
+  "&rru=addevent" +
+  "&subject="  + encodeURIComponent(EVENTO.titulo) +
+  "&startdt="  + DATA_DO_CASAMENTO.toISOString() +
+  "&enddt="    + FIM_DA_FESTA.toISOString() +
+  "&body="     + encodeURIComponent(EVENTO.desc) +
+  "&location=" + encodeURIComponent(EVENTO.local);
+
+// Apple, Samsung e outros: arquivo .ics, o formato padrão de evento
+document.getElementById("ag-ics").addEventListener("click", (e) => {
+  e.preventDefault();
+  const ics = [
+    "BEGIN:VCALENDAR", "VERSION:2.0", "BEGIN:VEVENT",
+    "UID:" + Date.now() + "@casamento",
+    "DTSTAMP:" + paraICS(new Date()),
+    "DTSTART:" + paraICS(DATA_DO_CASAMENTO),
+    "DTEND:"   + paraICS(FIM_DA_FESTA),
+    "SUMMARY:" + EVENTO.titulo,
+    "LOCATION:" + EVENTO.local,
+    "DESCRIPTION:" + EVENTO.desc,
+    "END:VEVENT", "END:VCALENDAR"
+  ].join("\r\n");   // o padrão .ics exige quebra de linha CRLF
+
+  const url = URL.createObjectURL(new Blob([ics], { type: "text/calendar" }));
+  const a = document.createElement("a");
+  a.href = url; a.download = "casamento.ics"; a.click();
+  URL.revokeObjectURL(url);   // libera a memória
+});
+
+
+/* =================================================================
+   MAPAS — uma função chamada duas vezes, sem repetir código
+   ================================================================= */
+function montarLocal(idMapa, idRota, ponto) {
+  const coord = ponto.lat + "," + ponto.lng;
+  document.getElementById(idMapa).src =
+    "https://maps.google.com/maps?q=" + coord + "&z=16&output=embed";
+  // Abre o app de mapas já com a rota traçada de onde a pessoa está
+  document.getElementById(idRota).href =
+    "https://www.google.com/maps/dir/?api=1&destination=" + coord;
+}
+montarLocal("mapa-catedral", "rota-catedral", LOCAIS.catedral);
+montarLocal("mapa-chacara",  "rota-chacara",  LOCAIS.chacara);
+
+
+/* =================================================================
+   DISTÂNCIA ENTRE OS DOIS PONTOS (Haversine)
+   Linha reta sobre a esfera terrestre — por estrada é sempre um
+   pouco mais, por isso o texto diz "cerca de".
+   ================================================================= */
+function distanciaKm(a, b) {
+  const R = 6371, rad = (g) => g * Math.PI / 180;
+  const dLat = rad(b.lat - a.lat), dLng = rad(b.lng - a.lng);
+  const h = Math.sin(dLat/2)**2 +
+            Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLng/2)**2;
+  return R * 2 * Math.asin(Math.sqrt(h));
+}
+document.getElementById("trajeto").textContent =
+  "Da catedral até a chácara são cerca de " +
+  distanciaKm(LOCAIS.catedral, LOCAIS.chacara).toFixed(1).replace(".", ",") + " km.";
+
+
+/* =================================================================
+   GALERIA + LIGHTBOX
+   Monto os cards por JS pra não repetir 6 blocos de HTML iguais.
+   ================================================================= */
+const grade = document.getElementById("grade-galeria");
+FOTOS.forEach((foto) => {
+  const col = document.createElement("div");
+  col.className = "col-6 col-md-4";   // 2 colunas no celular, 3 no tablet+
+  col.innerHTML =
+    '<a href="#" class="galeria-item" data-bs-toggle="modal" data-bs-target="#lightbox">' +
+      '<img src="' + foto.arq + '" alt="' + foto.alt + '" loading="lazy">' +
+    '</a>';
+  grade.appendChild(col);
+});
+
+// Um listener na grade inteira em vez de um por foto: quando o clique
+// sobe até aqui, descubro qual imagem foi. Chama-se delegação de
+// eventos, e é o padrão quando os elementos nascem por JS.
+grade.addEventListener("click", (e) => {
+  const img = e.target.closest(".galeria-item")?.querySelector("img");
+  if (!img) return;
+  const alvo = document.getElementById("lightbox-img");
+  alvo.src = img.src; alvo.alt = img.alt;
+});
+
+
+/* =================================================================
+   PIX E WHATSAPP
+   ================================================================= */
+const btnPix = document.getElementById("btn-pix");
+document.getElementById("pix-chave").textContent = PIX;
+
+btnPix.addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(PIX);
+    btnPix.textContent = "Copiado!";
+  } catch {
+    // A API de clipboard exige HTTPS. Se falhar, o aviso evita que a
+    // pessoa ache que copiou e cole a coisa errada no banco.
+    btnPix.textContent = "Copie manualmente";
+  }
+  setTimeout(() => (btnPix.textContent = "Copiar chave"), 2200);
+});
+
+document.getElementById("btn-rsvp").href =
+  "https://wa.me/" + WHATSAPP + "?text=" +
+  encodeURIComponent("Oi! Confirmando presença no casamento de vocês.");
+
+document.querySelectorAll(".cota").forEach((btn) => {
+  btn.href = "https://wa.me/" + WHATSAPP + "?text=" +
+    encodeURIComponent("Oi! Quero presentear com a cota de R$ " + btn.dataset.valor + ".");
+  btn.target = "_blank"; btn.rel = "noopener";
+});
+
+
+/* =================================================================
+   NAVBAR
+   ================================================================= */
+const navbar = document.getElementById("navbar");
+window.addEventListener("scroll", () => {
+  navbar.classList.toggle("rolou", window.scrollY > 60);
+}, { passive: true });   // passive: não bloqueia a rolagem
+
+// Fecha o menu do celular ao clicar num link — senão fica aberto por
+// cima da seção que a pessoa acabou de escolher.
+document.querySelectorAll("#menu .nav-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    bootstrap.Collapse.getInstance(document.getElementById("menu"))?.hide();
+  });
+});
+
+
+/* =================================================================
+   REVELAÇÃO AO ROLAR
+   IntersectionObserver avisa quando o elemento entra na tela — bem
+   mais eficiente que calcular posição no evento de scroll, porque o
+   navegador faz a conta fora da thread principal.
+   ================================================================= */
+const observador = new IntersectionObserver((entradas) => {
+  entradas.forEach((entrada) => {
+    if (entrada.isIntersecting) {
+      entrada.target.classList.add("visivel");
+      observador.unobserve(entrada.target);   // anima uma vez só
+    }
+  });
+}, { threshold: .12 });
+
+document.querySelectorAll(".revela").forEach((el) => observador.observe(el));
+</script>
+
+</body>
+</html>
