@@ -196,6 +196,64 @@ h2 {
 .fio span { font-size: .6rem; transform: rotate(45deg); }
 
 /* =================================================================
+   5b. CAPÍTULOS DA HISTÓRIA — tipografia para texto longo
+   Medida de ~34rem (60 a 70 caracteres por linha) e entrelinha 1.8:
+   é o que o olho acompanha sem se perder ao pular de linha.
+   ================================================================= */
+.capitulo { max-width: 34rem; margin: 0 auto; }
+
+.capitulo .ano {
+  font-family: var(--display); font-size: 3.5rem; font-weight: 300;
+  color: var(--salvia); line-height: 1; margin-bottom: .25rem;
+}
+
+.capitulo h3 {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.6rem, 4.5vw, 2.25rem);
+  color: var(--mata); margin-bottom: 2rem;
+}
+
+/* Uma fonte só no capítulo inteiro: ano, título, texto e frases
+   todos em Cormorant. Serifada em texto longo cansa menos a vista,
+   e o corpo sobe para 1.25rem porque essa fonte desenha pequeno. */
+.capitulo, .capitulo p, .capitulo h3, .capitulo .ano {
+  font-family: var(--display);
+}
+
+.capitulo p {
+  font-size: clamp(1.1875rem, 2.6vw, 1.3125rem);
+  line-height: 1.75;
+  color: var(--mata-mid); margin-bottom: 1.4rem;
+}
+
+/* Capitular: primeira letra em corpo grande, encaixada no texto.
+   O float faz as linhas seguintes correrem ao lado dela. */
+.capitulo .abertura::first-letter {
+  float: left; font-family: var(--display); font-size: 3.9rem;
+  line-height: .82; color: var(--mata); padding: .3rem .6rem 0 0;
+}
+
+/* As frases curtas que ela deixou sozinhas em um parágrafo. Em vez
+   de virarem linhas perdidas no meio do texto, viram respiro. */
+.capitulo .frase {
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(1.25rem, 3.4vw, 1.6rem); line-height: 1.35;
+  color: var(--mata); text-align: center;
+  margin: 2.5rem 0; padding: 0 1rem;
+}
+
+.capitulo .fecho {
+  font-family: var(--display); font-style: italic;
+  color: var(--mata); font-size: 1.125rem; line-height: 1.65;
+}
+
+.proximo-capitulo {
+  text-align: center; margin-top: 2.5rem;
+  font-size: .8125rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--salvia);
+}
+
+/* =================================================================
    6. LINHA DO TEMPO (história e programação)
    A linha é a borda do container; as bolinhas são ::before dos itens.
    ================================================================= */
@@ -409,37 +467,99 @@ html { scroll-behavior: smooth; }
 <!-- ===================== HISTÓRIA ===================== -->
 <section class="secao" id="historia">
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-7 revela">
-        <p class="olho mb-3">A história deles</p>
-        <h2 class="mb-5">Como tudo começou</h2>
 
-        <!-- CONFIRMAR: a Marcela disse que vai escrever os tópicos.
-             Estes são só a estrutura esperando o texto dela. -->
-        <div class="timeline">
-          <div class="timeline-item">
-            <p class="quando">Ano do encontro</p>
-            <h3>Onde se conheceram</h3>
-            <p>Aguardando o texto deles.</p>
-          </div>
-          <div class="timeline-item">
-            <p class="quando">Ano do namoro</p>
-            <h3>O começo do namoro</h3>
-            <p>Aguardando o texto deles.</p>
-          </div>
-          <div class="timeline-item">
-            <p class="quando">Ano do pedido</p>
-            <h3>O pedido</h3>
-            <p>Aguardando o texto deles.</p>
-          </div>
-          <div class="timeline-item">
-            <p class="quando">27 de novembro</p>
-            <h3>O casamento</h3>
-            <p>E aí entra você, que está lendo isso.</p>
-          </div>
-        </div>
-      </div>
+    <div class="revela text-center mb-5">
+      <p class="olho mb-3">A nossa história</p>
+      <h2>Capítulo um</h2>
     </div>
+
+    <article class="capitulo revela">
+      <p class="ano">2016</p>
+      <h3>Onde nos conhecemos</h3>
+
+      <p class="abertura">Nossa história começou em 2016, de um jeito simples e
+      despretensioso, num lugar que fazia parte da rotina: a padaria Big Pão.</p>
+
+      <p>Guto era um dos donos da padaria, junto com o irmão. Marcela morava
+      pertinho dali, estava na fase final da faculdade e tinha um motivo bem
+      específico para aparecer por lá: ela gostava muito de um bom misto de
+      presunto e queijo. De vez em quando um pãozinho também entrava na lista.</p>
+
+      <p>E foi assim que os caminhos começaram a se cruzar.</p>
+
+      <p>No início, pelo menos para a Marcela, não havia nada de romântico
+      naquelas idas à padaria. Ela queria comprar o mistinho dela e seguir a
+      vida. O Guto, porém, parece ter enxergado aquela história de um jeito
+      um pouco diferente.</p>
+
+      <p>Há quem diga que o encanto aconteceu desde o começo, e o próprio noivo
+      sustenta essa versão. Enquanto a Marcela só tinha olhos para o misto
+      quente, o Guto já começava a ter olhos para ela.</p>
+
+      <p class="frase">Mas o destino não estava com pressa.</p>
+
+      <p>Muitos meses se passaram. A Marcela terminou a faculdade, se formou e
+      começou a trabalhar. Até que, numa tarde, depois de sair exausta de um
+      plantão no Materno Infantil, resolveu passar na padaria.</p>
+
+      <p>E aquele dia, que parecia ser só mais um, acabou virando um daqueles
+      pequenos momentos que mudam tudo.</p>
+
+      <p>Lá ela encontrou a Gessiane, irmã do Guto. A Ge e a Marcela já se
+      conheciam de um projeto da faculdade, onde tinham trabalhado juntas. A
+      Gessiane tinha sido tutora dela. Entre uma conversa e outra, a Ge fez
+      aquilo que, olhando hoje, talvez já estivesse escrito para acontecer:
+      apresentou oficialmente o irmão.</p>
+
+      <p>O Guto e a Marcela finalmente conversaram de verdade.</p>
+
+      <p>Nada cinematográfico. Nenhuma música começou a tocar ao fundo. Nenhum
+      dos dois saiu dali imaginando que aquela conversa um dia estaria sendo
+      contada no site do próprio casamento.</p>
+
+      <p class="frase">Mas alguma coisa tinha começado.</p>
+
+      <p>Naquele mesmo dia, o Guto adicionou a Marcela no Facebook. Sim, a nossa
+      história é daquela época em que essas coisas aconteciam pelo Facebook!</p>
+
+      <p>E é aqui que as versões dos noivos divergem um pouquinho.</p>
+
+      <p>Segundo o Guto, a Marcela &ldquo;dificultou as coisas&rdquo;. O pedido
+      de amizade ficou lá, esperando pacientemente, porque ela simplesmente não
+      viu. E não foram alguns dias. Foram alguns meses.</p>
+
+      <p>Até que ela encontrou aquele pedido perdido e resolveu aceitar.</p>
+
+      <p>E o Guto não desperdiçou a oportunidade.</p>
+
+      <p>No mesmo instante em que ela aceitou, ele começou a puxar assunto. No
+      mesmo instante mesmo.</p>
+
+      <p>Coincidência? Talvez.</p>
+
+      <p>Ou talvez ele estivesse esperando aquele momento havia muito mais tempo
+      do que gostaria de admitir.</p>
+
+      <p>E foi assim, entre uma padaria, muitos mistinhos de presunto e queijo,
+      um encontro aparentemente comum, um pedido de amizade esquecido e uma
+      mensagem enviada sem perder um segundo sequer, que a nossa história
+      realmente começou.</p>
+
+      <p>Naquela época, nenhum de nós dois podia imaginar quantos caminhos ainda
+      percorreríamos juntos.</p>
+
+      <p class="fecho">Mas, olhando para trás, é bonito pensar que o amor já
+      estava encontrando uma forma de nos aproximar muito antes de percebermos
+      que estávamos começando a escrever a nossa história.</p>
+
+      <div class="fio"><span>&#9670;</span></div>
+
+      <!-- PRÓXIMOS CAPÍTULOS: copie o <article class="capitulo"> inteiro
+           e troque o ano, o título e os parágrafos. A classe .abertura
+           vai só no primeiro parágrafo (é ela que faz a capitular). -->
+      <p class="proximo-capitulo">Continua</p>
+    </article>
+
   </div>
 </section>
 
