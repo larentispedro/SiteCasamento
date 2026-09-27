@@ -133,10 +133,13 @@ h2 {
   background: var(--creme);
 }
 
+/* A arte já tem moldura dourada e fundo creme desenhados nela mesma.
+   Sombra forte e cantos arredondados brigavam com essa moldura e
+   faziam a imagem parecer um cartão colado por cima da página.
+   Menor, sem sombra e sem radius, ela se comporta como parte do
+   próprio convite em vez de uma foto solta. */
 .hero-arte {
-  width: 100%; max-width: 56rem;
-  border-radius: 3px;
-  box-shadow: 0 18px 50px rgba(46,74,50,.10);
+  width: 100%; max-width: 42rem;
   margin-bottom: clamp(2rem, 6vw, 3rem);
 }
 
