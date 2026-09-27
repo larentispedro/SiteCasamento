@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marcela &amp; José Augusto — 27 de novembro</title>
 <meta name="description" content="Marcela e José Augusto se casam em 27 de novembro, em Chapecó/SC.">
+<meta name="theme-color" content="#F7F2EC">
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+
+<!-- Como o link vai circular no WhatsApp/Instagram entre os convidados,
+     essas tags controlam o card de pré-visualização (imagem, título, texto). -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Marcela &amp; José Augusto — 27 de novembro">
+<meta property="og:description" content="Marcela e José Augusto se casam em 27 de novembro, em Chapecó/SC.">
+<meta property="og:image" content="https://larentispedro.github.io/SiteCasamento/img/arte.jpg">
+<meta property="og:url" content="https://larentispedro.github.io/SiteCasamento/">
+<meta name="twitter:card" content="summary_large_image">
 
 <!--
   =========================================================================
@@ -343,11 +354,16 @@ h2 {
   border-radius: 3px; padding: clamp(2rem, 6vw, 3.5rem); text-align: center;
 }
 
+/* Textura das folhas (img/fundo.jpg) só aqui: sobre o creme claro ela
+   perderia o contraste, mas como fecho escuro cria um respiro visual
+   entre o hero claro e o final da página. */
 footer {
-  padding: 3rem 1.25rem 3.5rem; text-align: center;
-  border-top: 1px solid rgba(192,160,98,.35);
-  color: var(--mata-mid); font-size: .8125rem;
-  letter-spacing: .16em; text-transform: uppercase;
+  padding: 4rem 1.25rem 4.5rem; text-align: center;
+  border-top: 1px solid rgba(192,160,98,.4);
+  background: linear-gradient(rgba(20,30,22,.62), rgba(20,30,22,.8)),
+              url("img/fundo.jpg") center/cover;
+  color: var(--creme); font-size: .8125rem;
+  letter-spacing: .18em; text-transform: uppercase;
 }
 
 /* Dropdown do Bootstrap no tema do site */
@@ -404,7 +420,7 @@ html { scroll-behavior: smooth; }
 <!-- ===================== HERO ===================== -->
 <header class="hero position-relative" id="topo">
   <!-- A arte já traz os nomes; repetir em texto competiria com ela -->
-  <img class="hero-arte" src="img/arte.jpg"
+  <img class="hero-arte" src="img/arte.jpg" fetchpriority="high"
        alt="Marcela e José Augusto — convite ilustrado com a catedral de Chapecó">
 
   <!-- CONFIRMAR o ano -->
