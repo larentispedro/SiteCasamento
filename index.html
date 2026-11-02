@@ -306,7 +306,7 @@ h2 {
 /* =================================================================
    8. CARDS
    ================================================================= */
-.card-local, .card-cota {
+.card-local {
   background: var(--creme-alto); border: 1px solid rgba(192,160,98,.3);
   border-radius: 3px; padding: 1.75rem;
   height: 100%;                      /* iguala a altura das colunas */
@@ -324,14 +324,8 @@ h2 {
 .card-local .endereco { color: var(--mata-mid); font-size: .9375rem; }
 /* margin-top: auto empurra o botão pro rodapé do card, alinhando os
    dois lados mesmo com endereços de alturas diferentes */
-.card-local .btn, .card-cota .btn { margin-top: auto; }
+.card-local .btn { margin-top: auto; }
 
-.card-cota .valor {
-  font-family: var(--display); font-size: 2rem; color: var(--ouro);
-  line-height: 1; margin-bottom: .35rem;
-}
-.card-cota h3 { font-size: 1rem; font-weight: 600; margin-bottom: .35rem; }
-.card-cota p { color: var(--mata-mid); font-size: .875rem; margin-bottom: 1.5rem; }
 
 .mapa { border: 1px solid rgba(192,160,98,.3); border-radius: 2px; overflow: hidden; line-height: 0; }
 .mapa iframe {
@@ -343,6 +337,63 @@ h2 {
 .info-item h3 { font-family: var(--display); font-size: 1.375rem; margin-bottom: .25rem; }
 .info-item p { color: var(--mata-mid); font-size: .9375rem; margin: 0; }
 
+/* Nome alternativo do local, em corpo menor ao lado do principal */
+.nome-alt { font-weight: 400; color: var(--mata-mid); font-size: .9375rem; }
+
+/* ----- Fecho do último capítulo ----- */
+.assinatura-capitulo {
+  font-family: var(--script); font-size: clamp(1.75rem, 5vw, 2.25rem);
+  color: var(--mata); text-align: center; margin-bottom: .25rem;
+}
+.data-capitulo {
+  font-family: var(--display); letter-spacing: .16em; text-transform: uppercase;
+  font-size: .8125rem; color: var(--mata-mid); text-align: center; margin-bottom: 1.75rem;
+}
+.continua-capitulo {
+  font-family: var(--display); font-style: italic; font-size: 1.125rem;
+  color: var(--ouro); text-align: center; margin: 0;
+}
+
+/* ----- Lista de presentes -----
+   Mesma fonte dos capítulos, porém mais compacta: entrelinha 1.6 em
+   vez de 1.75 e metade da margem entre parágrafos. O capítulo é para
+   contemplar; este texto é para percorrer até a chave Pix. */
+.texto-presentes p {
+  font-family: var(--display);
+  font-size: clamp(1.0625rem, 2.2vw, 1.1875rem);
+  line-height: 1.6; color: var(--mata-mid); margin-bottom: .7rem;
+}
+.texto-presentes .destaque {
+  font-size: clamp(1.25rem, 3vw, 1.5rem); color: var(--mata);
+  text-align: center; margin-bottom: 1.5rem;
+}
+.assinatura-presentes {
+  font-family: var(--script) !important;
+  font-size: clamp(1.5rem, 4vw, 2rem) !important;
+  color: var(--mata) !important; text-align: center; margin-top: 1.25rem;
+}
+
+/* ----- Padrinhos ----- */
+.casal {
+  font-family: var(--display); font-size: clamp(1.1875rem, 3vw, 1.375rem);
+  color: var(--mata); text-align: center; margin: 0;
+  padding: .85rem 1rem; border-bottom: 1px solid rgba(192,160,98,.3);
+}
+.casal span { font-style: italic; color: var(--ouro); margin: 0 .3rem; }
+
+.papel {
+  text-align: center; background: var(--creme-alto);
+  border: 1px solid rgba(192,160,98,.3); border-radius: 3px; padding: 1.5rem 1rem;
+}
+.papel-rot {
+  font-size: .6875rem; font-weight: 600; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--mata-mid); margin-bottom: .4rem;
+}
+.papel-nome {
+  font-family: var(--script); font-size: 1.75rem;
+  color: var(--mata); line-height: 1; margin: 0;
+}
+
 .pix-box {
   background: var(--creme-alto); border: 1px dashed var(--salvia);
   border-radius: 3px; padding: 1.5rem;
@@ -352,10 +403,6 @@ h2 {
 .pix-chave { font-family: ui-monospace, Menlo, monospace; font-size: 1rem; word-break: break-all; }
 .pix-rot { font-size: .6875rem; letter-spacing: .16em; text-transform: uppercase; color: var(--mata-mid); }
 
-.rsvp {
-  background: var(--creme-alto); border: 1px solid rgba(192,160,98,.35);
-  border-radius: 3px; padding: clamp(2rem, 6vw, 3.5rem); text-align: center;
-}
 
 /* Textura das folhas (img/fundo.jpg) só aqui: sobre o creme claro ela
    perderia o contraste, mas como fecho escuro cria um respiro visual
@@ -413,8 +460,8 @@ html { scroll-behavior: smooth; }
         <li class="nav-item"><a class="nav-link" href="#historia">História</a></li>
         <li class="nav-item"><a class="nav-link" href="#dia">O dia</a></li>
         <li class="nav-item"><a class="nav-link" href="#onde">Onde</a></li>
+        <li class="nav-item"><a class="nav-link" href="#padrinhos">Padrinhos</a></li>
         <li class="nav-item"><a class="nav-link" href="#presentes">Presentes</a></li>
-        <li class="nav-item"><a class="nav-link" href="#presenca">Presença</a></li>
       </ul>
     </div>
   </div>
@@ -572,11 +619,268 @@ html { scroll-behavior: smooth; }
       que estávamos começando a escrever a nossa história.</p>
 
       <div class="fio"><span>&#9670;</span></div>
+    </article>
 
-      <!-- PRÓXIMOS CAPÍTULOS: copie o <article class="capitulo"> inteiro
-           e troque o ano, o título e os parágrafos. A classe .abertura
-           vai só no primeiro parágrafo (é ela que faz a capitular). -->
-      <p class="proximo-capitulo">Continua</p>
+    <!-- ---------------- CAPÍTULO DOIS ---------------- -->
+    <article class="capitulo revela">
+      <p class="ano">2017</p>
+      <h3>Um Carnaval, um convite e um jantar de sushi</h3>
+
+      <p class="abertura">Depois de tantos meses esperando por um pedido de amizade que parecia não ter resposta, finalmente chegou o dia em que a Marcela resolveu aceitar o Guto no Facebook.</p>
+
+      <p>E, como contamos no capítulo anterior, ele não perdeu tempo.</p>
+
+      <p>Era um final de semana de Carnaval. O Guto, provavelmente imaginando que aquela seria uma ótima oportunidade para se aproximar, convidou a Marcela para ir ao Carnaval da Cher.</p>
+
+      <p>Parecia um bom plano. Pelo menos para ele.</p>
+
+      <p>O que o Guto ainda não sabia era que a Marcela nunca tinha sido uma grande fã de Carnaval. E, se tinha uma coisa que ela gostava menos do que Carnaval, era de lugares onde não tivesse onde sentar.</p>
+
+      <p>Digamos que os planos dele para aquele Carnaval precisaram ser reconsiderados.</p>
+
+      <p>Mas a Marcela também tinha uma proposta.</p>
+
+      <p>Ela já havia planejado sair para comer sushi naquela noite e, sem imaginar que estava prestes a colocar à prova a disposição daquele rapaz para conquistá-la, resolveu convidá-lo para acompanhá-la.</p>
+
+      <p>O Guto, mais do que depressa, aceitou.</p>
+
+      <p>Disse que adorava sushi.</p>
+
+      <p>E aqui precisamos fazer uma pequena pausa na história, porque existe um detalhe importante: o Guto não gosta de sushi.</p>
+
+      <p>Não gostava naquela época e continua não gostando até hoje.</p>
+
+      <p>Mas, aparentemente, havia algo naquele convite que era muito mais interessante do que o cardápio.</p>
+
+      <p>E assim aconteceu o nosso primeiro encontro.</p>
+
+      <p>A Marcela comeu sushi. O Guto não comeu absolutamente nada.</p>
+
+      <p>Ele, que havia garantido gostar tanto de comida japonesa, passou o jantar inteiro sem comer, mas nem por isso deixou de aproveitar a companhia.</p>
+
+      <p>Talvez tenha sido ali que a Marcela começou a enxergá-lo de um jeito diferente.</p>
+
+      <p>Ela encontrou naquele rapaz alguém querido, educado, gentil e disposto a fazer um pequeno esforço simplesmente para estar ao seu lado.</p>
+
+      <p>E, embora ainda não soubesse, talvez estivesse começando a se apaixonar.</p>
+
+      <p>O curioso é pensar que o Guto, que inicialmente tinha planos de passar o Carnaval em uma festa, acabou sentado em um restaurante japonês, diante de um prato de comida que não gostava, tentando conquistar uma moça que preferia um bom jantar a qualquer folia.</p>
+
+      <p>E, de alguma forma, tudo parecia estar exatamente onde deveria.</p>
+
+      <p>Depois daquela noite, as conversas não pararam mais.</p>
+
+      <p>Passamos a nos falar todos os dias. E, aos poucos, também a nos ver todos os dias.</p>
+
+      <p>Descobrimos tantas coisas em comum que estar juntos foi se tornando algo cada vez mais natural.</p>
+
+      <p>Não houve pressa, grandes declarações ou acontecimentos extraordinários. Havia a vontade de conversar mais um pouquinho, de prolongar os encontros, de dividir os acontecimentos do dia e de encontrar motivos para estarmos perto.</p>
+
+      <p>Quando percebemos, a Marcela já estava jantando na casa da Gessiane, conhecendo melhor a família do Guto e, pouco a pouco, fazendo parte daquele universo que antes lhe era tão desconhecido.</p>
+
+      <p>E o Guto também já começava a ocupar um lugar especial na vida dela.</p>
+
+      <p>Tudo aconteceu com uma naturalidade tão bonita que até o pedido oficial de namoro acabou ficando pelo caminho.</p>
+
+      <p>Não houve uma pergunta formal, nem um momento cuidadosamente planejado para marcar o início do relacionamento.</p>
+
+      <p>Simplesmente aconteceu.</p>
+
+      <p>Em algum momento, entre uma conversa e outra, os encontros de todos os dias, os jantares em família e a vontade cada vez maior de estarmos juntos, deixamos de ser apenas duas pessoas se conhecendo.</p>
+
+      <p class="frase">Já éramos nós.</p>
+
+      <p>E talvez essa seja uma das partes mais bonitas da nossa história: o amor não chegou fazendo barulho. Foi se aproximando devagar, encontrando espaço na rotina e se tornando parte dos nossos dias.</p>
+
+      <p>O Guto não conseguiu levar a Marcela ao Carnaval.</p>
+
+      <p>A Marcela não conseguiu fazer o Guto gostar de sushi.</p>
+
+      <p>Mas, naquela noite, sem que nenhum dos dois pudesse imaginar, encontramos algo muito melhor do que os planos que havíamos feito.</p>
+
+      <p class="frase">Encontramos um ao outro.</p>
+
+      <p>E aquele jantar, que poderia ter sido apenas um encontro de Carnaval, acabou sendo o começo de uma história que, tantos anos depois, nos traria até aqui.</p>
+
+      <p class="fecho">Às vezes, o amor começa assim: quando os planos mudam, as diferenças aparecem e, mesmo sem perceber, a gente encontra alguém com quem deseja compartilhar todos os próximos dias.</p>
+
+      <div class="fio"><span>&#9670;</span></div>
+    </article>
+
+    <!-- ---------------- CAPÍTULO TRÊS ---------------- -->
+    <article class="capitulo revela">
+      <h3>O amor também aprende a crescer</h3>
+
+      <p class="abertura">Depois daquele Carnaval, de um jantar de sushi um tanto inusitado e de um namoro que começou sem ninguém precisar fazer um pedido oficial, a nossa história foi ganhando seus próprios caminhos.</p>
+
+      <p>Vieram os encontros, as descobertas, os sonhos compartilhados e a alegria de termos encontrado, um no outro, não apenas um amor, mas também um grande amigo.</p>
+
+      <p>É claro que nem tudo foram flores.</p>
+
+      <p>No começo, junto com o encantamento, também vieram algumas pequenas discussões, um pouquinho de ciúmes e aquelas imaturidades que, hoje, olhando para trás, até nos fazem sorrir.</p>
+
+      <p>Afinal, éramos duas pessoas com personalidades bem diferentes.</p>
+
+      <p>O Guto, tranquilo, daqueles que preferem pagar para não entrar numa discussão. A Marcela, detalhista, perfeccionista e nem sempre muito disposta a aceitar quando as coisas saíam do planejado.</p>
+
+      <p>Ele, com sua calma quase inabalável. Ela, com suas certezas e algumas birrinhas. E, para não deixar toda a responsabilidade com a noiva, precisamos reconhecer que o Guto também tem sua boa dose de teimosia.</p>
+
+      <p>Mas o tempo foi nos ensinando algo importante: amar não significa pensar igual, concordar com tudo ou nunca discordar.</p>
+
+      <p>Significa aprender a respeitar as diferenças, reconhecer os próprios erros e, acima de tudo, não deixar que o orgulho seja maior do que aquilo que construímos juntos.</p>
+
+      <p>E assim fomos crescendo.</p>
+
+      <p>Entre os compromissos de trabalho, as rotinas corridas e a independência que sempre fez parte da vida dos dois, aprendemos a encontrar espaço um para o outro.</p>
+
+      <p>Talvez por muito tempo tenhamos sido duas pessoas que se amavam profundamente, mas que ainda não estavam prontas para reorganizar a vida inteira e dar o próximo passo.</p>
+
+      <p>Cada um tinha seu cantinho, seus hábitos, sua rotina. Estávamos sempre juntos, mas ainda não parecia ser a hora de casar.</p>
+
+      <p>Até que, numa sexta-feira à tarde, a vida resolveu nos presentear com um amor que mudaria tudo.</p>
+
+      <p class="frase">Chegou a nossa Melzinha.</p>
+
+      <p>Ela veio de maneira inesperada e transformou os nossos dias. O presente da vida da mamãe logo se tornou também o presente da vida do papai.</p>
+
+      <p>Com ela, descobrimos uma forma ainda mais bonita de amar, cuidar e compartilhar responsabilidades.</p>
+
+      <p>E até nas nossas pequenas discussões havia uma preocupação em comum: como ficaríamos longe da nossa pequena?</p>
+
+      <p>A verdade é que a Melzinha, do jeitinho dela, já havia nos transformado em família.</p>
+
+      <p>Mesmo sem dividirmos o mesmo endereço, já dividíamos muito mais do que imaginávamos.</p>
+
+      <p class="fecho">E, enquanto acreditávamos que ainda estávamos decidindo quando começaríamos a construir uma família, a vida, silenciosamente, já havia começado essa história por nós.</p>
+
+      <div class="fio"><span>&#9670;</span></div>
+    </article>
+
+    <!-- ---------------- CAPÍTULO QUATRO ---------------- -->
+    <article class="capitulo revela">
+      <h3>O sim que precisou esperar</h3>
+
+      <p class="abertura">Os anos passaram.</p>
+
+      <p>E aquele casal que começou a namorar depois de um Carnaval e de um jantar japonês já estava prestes a completar uma década de história.</p>
+
+      <p>Dez anos de amor, amizade, parceria, amadurecimento e tantas lembranças que seria impossível reunir em algumas páginas.</p>
+
+      <p>Mas havia um assunto que, de tempos em tempos, voltava às nossas conversas: o casamento.</p>
+
+      <p>A Marcela já sentia que era hora de dar um novo passo. Sonhava em construir um lar, ter filhos e viver plenamente a família que, de certa forma, já existia.</p>
+
+      <p>O Guto, por outro lado, tinha uma pergunta bastante prática:</p>
+
+      <p>Se estava tudo dando certo, por que mudar?</p>
+
+      <p>Ele nunca escondeu que tinha seus receios em relação ao casamento. Afinal, mudar uma rotina construída ao longo de tantos anos também significava sair da zona de conforto.</p>
+
+      <p>Mas chegou um momento em que a Marcela entendeu que o amor precisava encontrar um caminho para continuar crescendo.</p>
+
+      <p>E resolveu colocar as cartas na mesa.</p>
+
+      <p>Ou decidíamos juntos construir esse novo capítulo, ou talvez fosse necessário seguir caminhos diferentes.</p>
+
+      <p>Uma conversa séria, daquelas que exigem coragem, sinceridade e uma boa dose de maturidade.</p>
+
+      <p>E o Guto, diante de uma decisão tão importante, fez o que achou mais prudente.</p>
+
+      <p>Pediu um tempo para pensar.</p>
+
+      <p>Sim. Um tempo!</p>
+
+      <p>Quase dez anos depois, ele ainda precisava pensar um pouquinho.</p>
+
+      <p>A Marcela, que já havia esperado bastante, precisou encontrar dentro de si uma paciência que nem sempre foi sua maior qualidade.</p>
+
+      <p>E aqui entra uma curiosidade que o noivo faz questão de contar.</p>
+
+      <p>Segundo o Guto, tudo não passou de uma pequena vingança pelo pedido de amizade que ficou meses esquecido no Facebook.</p>
+
+      <p>Se ele precisou esperar lá no começo, agora seria a vez dela!</p>
+
+      <p>Não sabemos até que ponto essa versão é verdadeira, mas precisamos admitir que ele encontrou uma ótima justificativa.</p>
+
+      <p>Brincadeiras à parte, havia ali uma decisão importante. Não se tratava apenas de marcar uma data, organizar uma festa ou mudar de endereço.</p>
+
+      <p>Era sobre escolher, de maneira consciente, compartilhar uma vida inteira.</p>
+
+      <p>E, no tempo dele, o Guto encontrou a resposta que a Marcela tanto esperava.</p>
+
+      <p class="frase">O nosso sim.</p>
+
+      <p>Um sim que não nasceu da pressa, mas de uma história construída ao longo dos anos.</p>
+
+      <p>Um sim para o amor que amadureceu, para a parceria que resistiu às diferenças e para a família que desejamos continuar construindo.</p>
+
+      <p class="fecho">E, depois de tanto tempo, finalmente chegou a hora de transformar os nossos planos em um sonho com data marcada.</p>
+
+      <div class="fio"><span>&#9670;</span></div>
+    </article>
+
+    <!-- ---------------- CAPÍTULO CINCO ---------------- -->
+    <article class="capitulo revela">
+      <p class="ano">2026</p>
+      <h3>E todos os caminhos nos trouxeram até aqui</h3>
+
+      <p class="abertura">E assim chegamos a 2026.</p>
+
+      <p>De repente, aquele encontro despretensioso numa padaria, as mensagens pelo Facebook, o Carnaval que não aconteceu e o jantar de sushi se transformaram em quase dez anos de uma história que agora nos conduz ao altar.</p>
+
+      <p>Escolhemos o dia 27 de novembro para celebrar o nosso casamento.</p>
+
+      <p>Uma sexta-feira.</p>
+
+      <p>E quem conhece a nossa história sabe que essa escolha tem um significado muito especial.</p>
+
+      <p>Sempre gostamos das sextas-feiras à tarde. E foi justamente numa sexta-feira que a nossa pequena Mel chegou para transformar as nossas vidas.</p>
+
+      <p>Agora, no dia em que ela completa oito aninhos, também começaremos oficialmente um novo capítulo da nossa família.</p>
+
+      <p class="frase">Talvez não pudesse existir uma data mais nossa.</p>
+
+      <p>Ao longo desses anos, aprendemos que o amor não se sustenta apenas nos momentos bonitos, mas também nas escolhas silenciosas de todos os dias.</p>
+
+      <p>Na paciência, no respeito, na admiração, na capacidade de reconhecer as próprias imperfeições e na vontade de continuar caminhando juntos.</p>
+
+      <p>Hoje sabemos que casar não significa encontrar alguém com quem tudo será sempre fácil.</p>
+
+      <p>Significa encontrar alguém com quem vale a pena construir, aprender, recomeçar e dividir a vida.</p>
+
+      <p>E é com essa certeza que escolhemos receber o sacramento do matrimônio.</p>
+
+      <p>Diante de Deus, queremos assumir o compromisso de uma união alicerçada no amor, na fé, no respeito e na responsabilidade de um sim que desejamos viver para sempre.</p>
+
+      <p>Deixar de ser apenas dois caminhos que se encontram para nos tornarmos uma só família, sem perder aquilo que torna cada um de nós especial.</p>
+
+      <p>Sonhamos com um lar cheio de amor, com os filhos que esperamos receber, com a alegria das pequenas coisas e com a certeza de que estaremos juntos para viver tudo aquilo que a vida ainda nos reservar.</p>
+
+      <p>E, nesse momento tão especial, não poderíamos deixar de agradecer a todos que fazem parte da nossa história.</p>
+
+      <p>Às nossas famílias, aos amigos e a cada pessoa que, de alguma maneira, esteve presente ao longo dessa caminhada, nosso carinho e nossa gratidão.</p>
+
+      <p>É uma alegria imensa poder dividir esse dia com vocês.</p>
+
+      <p>Afinal, depois de tantos anos, entendemos que o mais bonito da nossa história não está apenas em tudo aquilo que vivemos, mas também em tudo o que ainda temos pela frente.</p>
+
+      <p>O Guto continua não gostando de sushi.</p>
+
+      <p>A Marcela continua gostando das coisas bem planejadas.</p>
+
+      <p>A Melzinha continua sendo a nossa pequena princesa.</p>
+
+      <p>E nós continuamos aprendendo, todos os dias, a escolher um ao outro.</p>
+
+      <p>Só que agora, com a bênção de Deus, estamos prontos para escrever os próximos capítulos sob o mesmo teto, com os mesmos sonhos e com um amor que encontrou, enfim, o seu momento.</p>
+
+      <p class="frase">E, de repente, todos os caminhos nos trouxeram até aqui.</p>
+
+      <div class="fio"><span>&#9670;</span></div>
+
+      <p class="assinatura-capitulo">Marcela e José Augusto</p>
+      <p class="data-capitulo">27 de novembro de 2026</p>
+      <p class="continua-capitulo">E a nossa história continua…</p>
     </article>
 
   </div>
@@ -590,27 +894,30 @@ html { scroll-behavior: smooth; }
         <p class="olho mb-3">Programação</p>
         <h2 class="mb-5">Como vai ser o dia</h2>
 
-        <!-- CONFIRMAR todos os horários -->
         <div class="timeline">
           <div class="timeline-item">
             <p class="quando">15h30</p>
-            <h3>Chegada dos convidados</h3>
+            <h3>Chegada dos padrinhos</h3>
             <p>Na Catedral Santo Antônio, no centro.</p>
           </div>
           <div class="timeline-item">
+            <p class="quando">15h45</p>
+            <h3>Chegada dos convidados</h3>
+          </div>
+          <div class="timeline-item">
             <p class="quando">16h</p>
-            <h3>Cerimônia</h3>
-            <p>Chegue antes: a noiva entra no horário.</p>
+            <h3>Cerimônia religiosa</h3>
+            <p>A noiva entra às 16h em ponto.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="quando">17h</p>
+            <h3>Troca de votos</h3>
+            <p>No Espaço Calisia, logo após a cerimônia da igreja.</p>
           </div>
           <div class="timeline-item">
             <p class="quando">19h</p>
-            <h3>Recepção na Chácara do Cris</h3>
-            <p>Cerca de 12 km da catedral — reserve o tempo do trajeto.</p>
-          </div>
-          <div class="timeline-item">
-            <p class="quando">23h</p>
-            <h3>Corte do bolo</h3>
-            <p>Seguido da pista até o fim.</p>
+            <h3>Recepção e festa</h3>
+            <p>No mesmo lugar da troca de votos.</p>
           </div>
         </div>
       </div>
@@ -642,9 +949,9 @@ html { scroll-behavior: smooth; }
       </div>
       <div class="col-lg-6">
         <article class="card-local">
-          <p class="etapa">Festa</p>
-          <p class="hora mb-4">a partir das 19h</p>
-          <p class="nome">Chácara do Cris</p>
+          <p class="etapa">Votos e festa</p>
+          <p class="hora mb-4">a partir das 17h</p>
+          <p class="nome">Espaço Calisia <span class="nome-alt">(Chácara do Cris)</span></p>
           <p class="endereco mb-4">BR-282, 535 — Trevo, Chapecó/SC</p>
           <div class="mapa mb-4">
             <iframe id="mapa-chacara" title="Mapa da Chácara do Cris" loading="lazy"></iframe>
@@ -662,7 +969,6 @@ html { scroll-behavior: smooth; }
 <section class="secao" id="galeria">
   <div class="container">
     <div class="revela text-center mb-5">
-      <p class="olho mb-3">Vocês dois</p>
       <h2>Fotos</h2>
     </div>
     <!-- CONFIRMAR: trocar pelas fotos reais em img/galeria/ -->
@@ -681,50 +987,92 @@ html { scroll-behavior: smooth; }
 <!-- ===================== PRESENTES ===================== -->
 <section class="secao" id="presentes">
   <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 revela">
+
+        <div class="text-center mb-5">
+          <p class="olho mb-3">Presentes</p>
+          <h2>Lista de presentes</h2>
+        </div>
+
+        <!-- Texto da Marcela, na íntegra. Espaçamento mais compacto que
+             o dos capítulos: aqui a pessoa percorre, não contempla. -->
+        <div class="texto-presentes">
+
+          <p class="destaque">Nosso maior presente é ter vocês conosco! 🤍</p>
+
+          <p>Depois de tantos anos compartilhando a vida, chegou a hora de celebrarmos um dos capítulos mais especiais da nossa história. E, para nós, o maior presente será ter por perto as pessoas que amamos, que fizeram parte da nossa caminhada e que, de alguma forma, ajudaram a construir a história que nos trouxe até aqui.</p>
+
+          <p>A presença de cada um de vocês, compartilhando conosco esse dia tão esperado, é o que realmente tornará nossa celebração inesquecível.</p>
+
+          <p>Ao longo dos preparativos, recebemos muitas perguntas carinhosas sobre a nossa lista de presentes. Confessamos que pensamos bastante no assunto, mas acabamos optando por não fazer uma lista tradicional. Afinal, depois de quase dez anos juntos, já temos praticamente tudo para começar essa nova etapa — inclusive duas casas montadas neste momento! E, convenhamos, organizar um casamento já envolve tantas listas que resolvemos nos poupar de mais uma! 🤍</p>
+
+          <p>Mas, como muitos de vocês fizeram questão de perguntar, resolvemos deixar algumas dicas, com todo o carinho e sem qualquer obrigação.</p>
+
+          <p>Para aqueles que desejarem nos presentear, fiquem à vontade para escolher algo que, de alguma forma, faça vocês lembrarem de nós. Adoramos tudo o que envolve receber bem, reunir amigos e família e aproveitar os pequenos prazeres da vida. Itens para adega, taças, peças para uma bela mesa posta e acessórios para churrasco são sempre bem-vindos. E quem conhece a noiva sabe que ela tem uma paixão especial pela cozinha e por tudo o que envolve preparar uma boa refeição!</p>
+
+          <p>Também somos apaixonados por viagens, passeios e lugares aconchegantes, especialmente aqueles que nos permitem desacelerar e aproveitar a companhia um do outro. Depois da lua de mel, sonhamos em organizar uma viagem muito especial para colecionarmos ainda mais histórias e boas lembranças.</p>
+
+          <p>E, para aqueles que preferirem a praticidade de um presente simbólico, deixamos abaixo uma alternativa, com a qual poderão, se assim desejarem, fazer parte desse nosso próximo sonho.</p>
+
+          <p>Com carinho, nossa chave Pix:</p>
+        </div>
+
+        <div class="pix-box my-4">
+          <div>
+            <p class="pix-rot mb-1">Chave Pix</p>
+            <span class="pix-chave" id="pix-chave"></span>
+          </div>
+          <button class="btn btn-ouro" id="btn-pix">Copiar chave</button>
+        </div>
+
+        <div class="texto-presentes">
+          <p>Mas queremos reforçar algo que vem do coração: não esperamos presentes. O que mais desejamos é celebrar esse momento ao lado de pessoas queridas, cercados de afeto, alegria e boas memórias.</p>
+
+          <p>Porque, no fim das contas, os presentes mais preciosos não são aqueles que guardamos em casa, mas os momentos que levamos conosco para a vida inteira.</p>
+
+          <p>Com todo o nosso carinho e gratidão,</p>
+
+          <p class="assinatura-presentes">Marcela e José Augusto 🤍</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PADRINHOS ===================== -->
+<section class="secao" id="padrinhos">
+  <div class="container">
     <div class="revela text-center mb-5">
-      <p class="olho mb-3">Presentes</p>
-      <h2 class="mb-3">Cotas de lua de mel</h2>
-      <p class="mx-auto mb-0" style="color: var(--mata-mid); max-width: 34rem">
-        A presença de vocês já basta. Mas quem quiser ajudar na viagem,
-        pode escolher uma cota abaixo ou usar o Pix direto.
-      </p>
+      <p class="olho mb-3">Com a gente</p>
+      <h2>Padrinhos e madrinhas</h2>
     </div>
 
-    <!-- CONFIRMAR: valores e títulos -->
-    <div class="row g-4 mb-5 revela">
-      <div class="col-md-6 col-lg-4">
-        <div class="card-cota">
-          <p class="valor">R$ 100</p>
-          <h3>Um jantar a dois</h3>
-          <p>Com vista pro mar, de preferência.</p>
-          <a class="btn btn-contorno cota" href="#" data-valor="100">Presentear</a>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card-cota">
-          <p class="valor">R$ 250</p>
-          <h3>Uma diária</h3>
-          <p>Uma noite a mais na viagem.</p>
-          <a class="btn btn-contorno cota" href="#" data-valor="250">Presentear</a>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card-cota">
-          <p class="valor">R$ 500</p>
-          <h3>Um passeio</h3>
-          <p>Aquele que eles vão contar pra todo mundo.</p>
-          <a class="btn btn-contorno cota" href="#" data-valor="500">Presentear</a>
-        </div>
-      </div>
+    <div class="row g-3 justify-content-center revela">
+      <div class="col-sm-6 col-lg-4"><p class="casal">Crislei <span>e</span> Charles</p></div>
+      <div class="col-sm-6 col-lg-4"><p class="casal">Mariana <span>e</span> Alex</p></div>
+      <div class="col-sm-6 col-lg-4"><p class="casal">Rosmari <span>e</span> Leandro</p></div>
+      <div class="col-sm-6 col-lg-4"><p class="casal">Daniela <span>e</span> Juliano</p></div>
+      <div class="col-sm-6 col-lg-4"><p class="casal">Ivania <span>e</span> Humberto</p></div>
+      <div class="col-sm-6 col-lg-4"><p class="casal">Delci <span>e</span> Gerson</p></div>
     </div>
 
-    <!-- CONFIRMAR: a chave Pix real -->
-    <div class="pix-box revela">
-      <div>
-        <p class="pix-rot mb-1">Chave Pix</p>
-        <span class="pix-chave" id="pix-chave">casamento@exemplo.com.br</span>
+    <div class="fio"><span>&#9670;</span></div>
+
+    <div class="row g-4 justify-content-center revela">
+      <div class="col-sm-6 col-lg-4">
+        <div class="papel">
+          <p class="papel-rot">Pajem</p>
+          <p class="papel-nome">Jorge Augusto</p>
+        </div>
       </div>
-      <button class="btn btn-ouro" id="btn-pix">Copiar chave</button>
+      <div class="col-sm-6 col-lg-4">
+        <div class="papel">
+          <p class="papel-rot">Daminha de honra</p>
+          <p class="papel-nome">Mel Maria</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -733,43 +1081,20 @@ html { scroll-behavior: smooth; }
 <section class="secao" id="info">
   <div class="container">
     <div class="revela text-center mb-5">
-      <p class="olho mb-3">Antes de ir</p>
-      <h2>O que os convidados costumam perguntar</h2>
+      <h2>Informações</h2>
     </div>
-    <!-- CONFIRMAR todos os textos -->
-    <div class="row g-4 revela">
-      <div class="col-md-6 col-lg-3">
-        <div class="info-item"><h3>Traje</h3><p>Esporte fino. Evite branco e off-white.</p></div>
+    <div class="row g-4 justify-content-center revela">
+      <div class="col-md-6 col-lg-4">
+        <div class="info-item">
+          <h3>Traje</h3>
+          <p>Esporte fino. As madrinhas usarão verde, e os padrinhos,
+             terno cinza claro com gravata verde.</p>
+        </div>
       </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="info-item"><h3>Estacionamento</h3><p>A chácara tem estacionamento próprio e gratuito.</p></div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="info-item"><h3>Crianças</h3><p>Confirme se a festa será só para adultos.</p></div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="info-item"><h3>Hospedagem</h3><p>Para quem vem de fora: hotéis próximos à BR-282.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== PRESENÇA ===================== -->
-<section class="secao" id="presenca">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-7 revela">
-        <div class="rsvp">
-          <p class="olho mb-3">Confirmação</p>
-          <h2 class="mb-3">Você vem?</h2>
-          <p class="mb-4" style="color: var(--mata-mid)">
-            Confirme até <strong>30 de outubro</strong> para ajudarem no
-            fechamento do buffet.
-          </p>
-          <!-- CONFIRMAR: número no formato 55 + DDD + número -->
-          <a class="btn btn-ouro" id="btn-rsvp" href="#" target="_blank" rel="noopener">
-            Confirmar pelo WhatsApp
-          </a>
+      <div class="col-md-6 col-lg-4">
+        <div class="info-item">
+          <h3>Estacionamento</h3>
+          <p>O Espaço Calisia tem estacionamento próprio e gratuito.</p>
         </div>
       </div>
     </div>
@@ -796,8 +1121,18 @@ const LOCAIS = {
   chacara:  { lat: -26.9998751, lng: -52.6516185 }
 };
 
-const PIX      = "casamento@exemplo.com.br";   // CONFIRMAR
-const WHATSAPP = "5549900000000";              // CONFIRMAR
+// Enquanto estes valores forem os de exemplo abaixo, as seções que
+// dependem deles ficam ocultas no site. É proposital: chave Pix e
+// WhatsApp falsos no ar são pior que seção faltando — alguém tenta
+// pagar ou mandar mensagem e cai no vazio. Troque pelos reais e as
+// seções voltam sozinhas, sem mexer em mais nada.
+const PIX = "PREENCHER";   // CONFIRMAR: a chave Pix deles
+
+// Enquanto a chave for "PREENCHER", a seção de presentes fica oculta.
+// É proposital: chave falsa no ar é pior que seção faltando. Troque
+// pela real e a seção volta sozinha.
+const temPix = PIX !== "PREENCHER";
+
 
 const EVENTO = {
   titulo: "Casamento de Marcela e José Augusto",
@@ -805,13 +1140,18 @@ const EVENTO = {
   desc:   "Cerimônia na Catedral às 16h. Festa na Chácara do Cris às 19h."
 };
 
+// As fotos já estão redimensionadas para 1400px e comprimidas
+// (1,2 MB as oito juntas). Para trocar alguma, mantenha o nome do
+// arquivo e comprima antes em squoosh.app.
 const FOTOS = [
-  { arq: "img/galeria/foto-1.jpg", alt: "Foto do casal" },
-  { arq: "img/galeria/foto-2.jpg", alt: "Foto do casal" },
-  { arq: "img/galeria/foto-3.jpg", alt: "Foto do casal" },
-  { arq: "img/galeria/foto-4.jpg", alt: "Foto do casal" },
-  { arq: "img/galeria/foto-5.jpg", alt: "Foto do casal" },
-  { arq: "img/galeria/foto-6.jpg", alt: "Foto do casal" }
+  { arq: "img/galeria/foto-1.jpg", alt: "O casal na trilha da mata" },
+  { arq: "img/galeria/foto-2.jpg", alt: "Beijo à beira do rio, no fim da tarde" },
+  { arq: "img/galeria/foto-3.jpg", alt: "O casal com a Mel no colo" },
+  { arq: "img/galeria/foto-4.jpg", alt: "Os dois de frente para a cachoeira" },
+  { arq: "img/galeria/foto-5.jpg", alt: "O casal no deque, em preto e branco" },
+  { arq: "img/galeria/foto-6.jpg", alt: "Brinde do casal na parede de tijolos" },
+  { arq: "img/galeria/foto-7.jpg", alt: "Abraço do casal no muro de hera" },
+  { arq: "img/galeria/foto-8.jpg", alt: "A Mel de laço, entre os dois" }
 ];
 
 
@@ -923,7 +1263,7 @@ function distanciaKm(a, b) {
   return R * 2 * Math.asin(Math.sqrt(h));
 }
 document.getElementById("trajeto").textContent =
-  "Da catedral até a chácara são cerca de " +
+  "Da catedral até o Espaço Calisia são cerca de " +
   distanciaKm(LOCAIS.catedral, LOCAIS.chacara).toFixed(1).replace(".", ",") + " km.";
 
 
@@ -932,6 +1272,11 @@ document.getElementById("trajeto").textContent =
    Monto os cards por JS pra não repetir 6 blocos de HTML iguais.
    ================================================================= */
 const grade = document.getElementById("grade-galeria");
+
+if (FOTOS.length === 0) {
+  document.getElementById("galeria").hidden = true;
+}
+
 FOTOS.forEach((foto) => {
   const col = document.createElement("div");
   col.className = "col-6 col-md-4";   // 2 colunas no celular, 3 no tablet+
@@ -954,10 +1299,16 @@ grade.addEventListener("click", (e) => {
 
 
 /* =================================================================
-   PIX E WHATSAPP
+   PIX
    ================================================================= */
 const btnPix = document.getElementById("btn-pix");
-document.getElementById("pix-chave").textContent = PIX;
+
+if (temPix) {
+  document.getElementById("pix-chave").textContent = PIX;
+} else {
+  // Sem chave real, a seção inteira de presentes sai do ar
+  document.getElementById("presentes").hidden = true;
+}
 
 btnPix.addEventListener("click", async () => {
   try {
@@ -971,15 +1322,6 @@ btnPix.addEventListener("click", async () => {
   setTimeout(() => (btnPix.textContent = "Copiar chave"), 2200);
 });
 
-document.getElementById("btn-rsvp").href =
-  "https://wa.me/" + WHATSAPP + "?text=" +
-  encodeURIComponent("Oi! Confirmando presença no casamento de vocês.");
-
-document.querySelectorAll(".cota").forEach((btn) => {
-  btn.href = "https://wa.me/" + WHATSAPP + "?text=" +
-    encodeURIComponent("Oi! Quero presentear com a cota de R$ " + btn.dataset.valor + ".");
-  btn.target = "_blank"; btn.rel = "noopener";
-});
 
 
 /* =================================================================
@@ -1005,6 +1347,13 @@ document.querySelectorAll("#menu .nav-link").forEach((link) => {
    mais eficiente que calcular posição no evento de scroll, porque o
    navegador faz a conta fora da thread principal.
    ================================================================= */
+// Tira do menu os links que apontam para seções ocultas
+document.querySelectorAll("#menu .nav-link").forEach((link) => {
+  const alvo = document.querySelector(link.getAttribute("href"));
+  if (alvo && alvo.hidden) link.closest(".nav-item").hidden = true;
+});
+
+
 const observador = new IntersectionObserver((entradas) => {
   entradas.forEach((entrada) => {
     if (entrada.isIntersecting) {
