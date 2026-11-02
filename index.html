@@ -769,6 +769,9 @@ html { scroll-behavior: smooth; }
 // O "-03:00" é o fuso de Brasília. Sem ele, o navegador usa o fuso de
 // quem acessa e a contagem sai errada pra quem abrir de fora.
 const DATA_DO_CASAMENTO = new Date("2026-11-27T16:00:00-03:00");
+// Horário que vai pro evento salvo na agenda do convidado: a chegada,
+// não o início da cerimônia, pra ele não entrar atrasado.
+const CHEGADA_CONVIDADOS = new Date("2026-11-27T15:45:00-03:00");
 const FIM_DA_FESTA      = new Date("2026-11-28T02:00:00-03:00");
 
 const LOCAIS = {
@@ -792,7 +795,7 @@ const temPix = PIX !== "PREENCHER";
 const EVENTO = {
   titulo: "Casamento de Marcela e José Augusto",
   local:  "Catedral Santo Antônio, R. Mal. Floriano Peixoto, Centro, Chapecó/SC",
-  desc:   "Cerimônia na Catedral às 16h. Festa na Chácara do Cris às 19h."
+  desc:   "Cerimônia na Catedral às 16h. Troca de votos e festa no Espaço Calíssia (Chácara do Cris), a partir das 17h."
 };
 
 // As fotos já estão redimensionadas para 1400px e comprimidas
@@ -857,7 +860,7 @@ function paraICS(d) {
 document.getElementById("ag-google").href =
   "https://calendar.google.com/calendar/render?action=TEMPLATE" +
   "&text="     + encodeURIComponent(EVENTO.titulo) +
-  "&dates="    + paraICS(DATA_DO_CASAMENTO) + "/" + paraICS(FIM_DA_FESTA) +
+  "&dates="    + paraICS(CHEGADA_CONVIDADOS) + "/" + paraICS(FIM_DA_FESTA) +
   "&details="  + encodeURIComponent(EVENTO.desc) +
   "&location=" + encodeURIComponent(EVENTO.local);
 
@@ -865,7 +868,7 @@ document.getElementById("ag-outlook").href =
   "https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose" +
   "&rru=addevent" +
   "&subject="  + encodeURIComponent(EVENTO.titulo) +
-  "&startdt="  + DATA_DO_CASAMENTO.toISOString() +
+  "&startdt="  + CHEGADA_CONVIDADOS.toISOString() +
   "&enddt="    + FIM_DA_FESTA.toISOString() +
   "&body="     + encodeURIComponent(EVENTO.desc) +
   "&location=" + encodeURIComponent(EVENTO.local);
@@ -877,7 +880,7 @@ document.getElementById("ag-ics").addEventListener("click", (e) => {
     "BEGIN:VCALENDAR", "VERSION:2.0", "BEGIN:VEVENT",
     "UID:" + Date.now() + "@casamento",
     "DTSTAMP:" + paraICS(new Date()),
-    "DTSTART:" + paraICS(DATA_DO_CASAMENTO),
+    "DTSTART:" + paraICS(CHEGADA_CONVIDADOS),
     "DTEND:"   + paraICS(FIM_DA_FESTA),
     "SUMMARY:" + EVENTO.titulo,
     "LOCATION:" + EVENTO.local,
